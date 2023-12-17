@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Afacad:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:wght@400,700&display=swap">
+</head>
+<body>
+    <header>
+      
+      <nav>
+        <div class="icono-menu">
+          <img src="img/hamburguesa.png" id="icno-menu">
+      </div>
+      <div class="cont-menu" id="menu">
+          <ul>
+              <li><a href="index.html">Inicio</a></li>
+              <li><a href="categorias.html">Categorías</a></li>
+              <li><a href="carrito.html">Carrito</a></li>
+          </ul>
+      </div>
+      <div class="opacity" id="overlay"></div>
+      <script src="hambruguesa.js"></script>
+    </nav>
+
+
+    <div class="logo">
+      <img src="img/Logo.jpg" alt="Logo de Mi Tienda">
+    </div>
+    <div class="acciones">
+      <div class="barra-busqueda">
+        <input type="text" placeholder="Buscar..." />
+      </div>
+      <a href="login.html" class="login-btn">Login</a>
+      <div class="carrito">
+        <a href="carrito.html" class="carrito">
+          <img src="img/carrito de la compra.png" alt="Icono de carrito">
+          <span class="contador">0</span>
+      </a>
+      </div>
+    </div>
+      </header>
+
+      <!-- Seccion main hero -->
+      <main>
+        <section class="hero">
+          <div class="slider">
+              <div class="list">
+                  <div class="item">
+                      <img src="img/slider1.jpg" alt="">
+                      <div class="regala">
+                          <h2><span>La Mejor</span><br> CALIDAD</h2>
+                      </div>
+                  </div>
+                  <div class="item">
+                      <img src="img/slider2.jpg" alt="">
+                      <div class="regala">
+                          <h2>OFERTAS<br> <span>Promociones</span></h2>
+                      </div>
+                  </div>
+                  <div class="item">
+                      <img src="img/slider3.jpg" alt="">
+                      <div class="regala">
+                          <h2>Pago <br><span>Seguro</span></h2>
+                      </div>
+                  </div>
+                  <div class="item">
+                      <img src="img/img3.jpg" alt="">
+                      <div class="regala">
+                          <h2>Entrega en<br> <span>24h</span></h2>
+                      </div>
+                  </div>
+              </div>
+              <div class="buttons">
+                  <button id="prev"><</button>
+                  <button id="next">></button>
+              </div>
+              <ul class="dots">
+                  <li class="active"></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+              </ul>
+          </div>
+  
+          <script src="app.js"></script>
+      </section>
+
+      <!-- Seccion de Hombre y muejr -->
+      <section>
+      <div class="contenedor">
+        <div class="seccion-mujer">
+            <h2>Ropa para Mujer</h2>
+        </div>
+        <div class="seccion-hombre">
+            <h2>Ropa para Hombre</h2>
+        </div>
+    </div>
+  </section>
+  <!-- Seccion Ofertas -->
+  <section class="ofertas-section">
+    <div class="ofertas-content">
+        <h2>¡Descuentos Especiales!</h2>
+        <p>Descubre nuestras ofertas exclusivas para ti.</p>
+        <a href="#" class="ver-ofertas-btn">Ver Ofertas</a>
+    </div>
+</section>
+
+        <!-- Seccion Síguenos -->
+      <section class="siguenos">
+        <div class="siguenos-content">
+            <div class="siguenos-images">
+                <img src="img/eslogan.jpg" alt="Imagen 1">
+                <img src="img/eslogan2.png" alt="Imagen 2">
+            </div>
+            <div class="siguenos-text">
+                <p>¡Síguenos para estar al tanto de las últimas novedades y promociones!</p>
+            </div>
+            <div class="siguenos-icons">
+              <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+              <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+              <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+      </section>
+      
+
+      <footer class="ecommerce-footer">
+        <div class="footer-section">
+          <h2>Ayuda</h2>
+          <ul>
+            <li><a href="#">Preguntas frecuentes</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#">Envíos y entregas</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h2>Nosotros</h2>
+          <ul>
+            <li><a href="#">Historia</a></li>
+            <li><a href="#">Equipo</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="#">Términos y condiciones</a></li>
+            <li><a href="#">Política de privacidad</a></li>
+            <li><a href="#">Devoluciones y cambios</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section payment-methods">
+          <h2>Métodos de pago</h2>
+          <p>Aceptamos los siguientes métodos de pago:</p>
+          <img src="img/visa.png" alt="Visa">
+          <img src="img/mastercard.png" alt="MasterCard">
+          <img src="img/paypal.png" alt="PayPal">
+        </div>
+        
+        <div class="social-icons">
+          <h2>Síguenos</h2>
+          <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </footer>
+</body>
+</html>
