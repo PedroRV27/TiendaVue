@@ -1,0 +1,72 @@
+/* Variables */
+:root {
+  --footer-bg-color: #333; /* Color de fondo del pie de página */
+  --footer-text-color: #fff; /* Color del texto del pie de página */
+  --footer-padding: 20px; /* Espaciado interno del pie de página */
+
+  --footer-section-margin: 20px; /* Margen de las secciones del pie de página */
+  --footer-link-color: white; /* Color de enlaces en el pie de página */
+
+  --social-icons-margin-top: 20px; /* Margen superior de los íconos sociales */
+  --social-icons-color: #fff; /* Color de los íconos sociales */
+  --social-icons-link-margin: 10px; /* Margen de los enlaces de íconos sociales */
+
+  --payment-methods-img-width: 50px; /* Ancho de las imágenes de métodos de pago */
+  --payment-methods-img-margin: 5px; /* Margen de las imágenes de métodos de pago */
+}
+
+/* Footer */
+body{
+  font-family: 'Raleway', sans-serif;
+}
+.ecommerce-footer {
+  background-color: var(--footer-bg-color);
+  color: var(--footer-text-color);
+  padding: var(--footer-padding);
+  text-align: center;
+}
+
+.footer-section {
+  display: inline-block;
+  margin: 0 var(--footer-section-margin);
+  text-align: left;
+}
+
+.footer-section a {
+  text-decoration: none;
+  color: var(--footer-link-color);
+}
+
+.footer-section h2 {
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 5px;
+}
+
+.social-icons {
+  margin-top: var(--social-icons-margin-top);
+}
+
+.social-icons h2 {
+  margin-bottom: 10px;
+}
+
+.social-icons a {
+  color: var(--social-icons-color);
+  text-decoration: none;
+  margin: 0 var(--social-icons-link-margin);
+  font-size: 1.5em;
+}
+
+.payment-methods img {
+  width: var(--payment-methods-img-width);
+  height: auto;
+  margin: var(--payment-methods-img-margin);
+}

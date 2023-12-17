@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maqueta de Carrito de Compras con Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/categorias.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="icono-menu">
+              <img src="img/hamburguesa.png" id="icno-menu">
+          </div>
+          <div class="cont-menu" id="menu">
+              <ul>
+                  <li><a href="categorias.html">Categorías</a></li>
+              </ul>
+          </div>
+          <div class="opacity" id="overlay"></div>
+          <script src="js/hambruguesa.js"></script>
+        </nav>
+  
+      <div class="logo">
+        <img src="img/Logo.jpg" alt="Logo de Mi Tienda">
+      </div>
+        </header>
+
+    <main id="app">
+        <!-- Selector de Categoría -->
+        <div class="category-selector">
+            <label for="category">Selecciona una categoría:</label>
+            <select id="category" v-model="selectedCategory">
+                <option value="">Todas</option>
+                <option v-for="category in categories" :key="category" :value="category">{{ category }}</option>
+            </select>
+        </div>
+
+        <!-- Selector de Orden -->
+        <div class="category-selector">
+            <label for="sort">Ordenar por:</label>
+            <select id="sort" v-model="sortBy">
+                <option value="">Selecciona</option>
+                <option value="price">Precio</option>
+                <option value="name">Nombre</option>
+            </select>
+            <button @click="toggleSortOrder">{{ sortOrder === 'asc' ? 'Ascendente' : 'Descendente' }}</button>
+        </div>
+
+        <!-- Productos -->
+        <div class="productos">
+            <div class="categoria">
+                <h3>Productos</h3>
+            </div>
+            <div class="galeria-productos">
+                <div class="producto" v-for="(product, index) in sortedProducts" :key="index">
+                    <h2>{{ product.title }}</h2>
+                    <img :src="product.image" :alt="product.title" style="max-width: 100%">
+                    <div class="producto-info">
+                        <p>{{ product.description }}</p>
+                        <p class="precio">Precio: ${{ product.price.toFixed(2) }}</p>
+                        <button @click="addToCart(product)">Agregar al carrito</button>
+                        <button @click="goToDetailsPage(product.id)">Ver Detalles</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carrito de Compras -->
+        <div class="cart">
+            <h2>Carrito de Compras</h2>
+            <div class="cart-item" v-for="(item, index) in cart" :key="index">
+                <span>{{ item.name }}</span>
+                <span>$ {{ item.price.toFixed(2) }}</span>
+                <button @click="removeFromCart(index)" class="delete">✕</button>
+            </div>
+            <div class="total">Total: $ {{ total.toFixed(2) }}</div>
+            <button @click="checkout">Realizar pedido</button>
+        </div>
+    </main>
+
+    <footer class="ecommerce-footer">
+        <div class="footer-section">
+          <h2>Ayuda</h2>
+          <ul>
+            <li><a href="#">Preguntas frecuentes</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#">Envíos y entregas</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h2>Nosotros</h2>
+          <ul>
+            <li><a href="#">Historia</a></li>
+            <li><a href="#">Equipo</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="#">Términos y condiciones</a></li>
+            <li><a href="#">Política de privacidad</a></li>
+            <li><a href="#">Devoluciones y cambios</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section payment-methods">
+          <h2>Métodos de pago</h2>
+          <p>Aceptamos los siguientes métodos de pago:</p>
+          <img src="img/visa.png" alt="Visa">
+          <img src="img/mastercard.png" alt="MasterCard">
+          <img src="img/paypal.png" alt="PayPal">
+        </div>
+        
+        <div class="social-icons">
+          <h2>Síguenos</h2>
+          <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </footer>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    products: [],
+                    cart: [],
+                    total: 0,
+                    selectedCategory: "",
+                    sortBy: "",
+                    sortOrder: "asc"
+                };
+            },
+            computed: {
+                categories() {
+                    const allCategories = this.products.map(product => product.category);
+                    return [...new Set(allCategories)];
+                },
+                sortedProducts() {
+                    let sorted = [...this.filteredProducts];
+                    if (this.sortBy === "price") {
+                        sorted.sort((a, b) => (this.sortOrder === "asc" ? a.price - b.price : b.price - a.price));
+                    } else if (this.sortBy === "name") {
+                        sorted.sort((a, b) => (this.sortOrder === "asc" ? a.title.localeCompare(b.title) : b.title.localeCompare(a.title)));
+                    }
+                    return sorted;
+                },
+                filteredProducts() {
+                    return this.selectedCategory
+                        ? this.products.filter(product => product.category === this.selectedCategory)
+                        : this.products;
+                }
+            },
+            mounted() {
+                this.fetchProducts();
+            },
+            methods: {
+                addToCart(product) {
+                    this.cart.push({
+                        name: product.title,
+                        price: product.price
+                    });
+                    this.calculateTotal();
+                },
+                removeFromCart(index) {
+                    this.cart.splice(index, 1);
+                    this.calculateTotal();
+                },
+                checkout() {
+                    alert('Pedido realizado. Gracias por comprar con nosotros!');
+                },
+                calculateTotal() {
+                    this.total = this.cart.reduce((acc, item) => acc + item.price, 0);
+                },
+                fetchProducts() {
+                    fetch('https://fakestoreapi.com/products')
+                        .then(response => response.json())
+                        .then(data => {
+                            this.products = data;
+                        })
+                        .catch(error => {
+                            console.error('Error al obtener productos:', error);
+                        });
+                },
+                toggleSortOrder() {
+                    this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+                },
+                goToDetailsPage(productId) {
+                window.location.href = `detalles.html?id=${productId}`;
+            }
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+</html>

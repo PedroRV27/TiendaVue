@@ -1,0 +1,190 @@
+:root {
+    --max-container-width: 1200px;
+    --margin-container: 20px auto;
+    --padding-container: 20px;
+    --container-bg-color: #fff;
+    --container-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    --grid-gap: 20px;
+    --category-margin: 30px;
+    --category-title-font-size: 24px;
+    --category-title-color: #333;
+    --product-margin: 30px;
+    --product-padding: 15px;
+    --product-border: 1px solid #ddd;
+    --product-bg-color: #fff;
+    --product-transition: transform 0.3s ease-in-out;
+    --product-border-radius: 8px;
+    --product-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --product-info-padding: 10px;
+    --product-text-align: center;
+    --product-text-color: #555;
+    --price-font-weight: bold;
+    --price-color: #e44d26;
+    --price-font-size: 16px;
+}
+
+body {
+    font-family: 'Afacad', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    max-width: var(--max-container-width);
+    margin: var(--margin-container);
+    padding: var(--padding-container);
+    background-color: var(--container-bg-color);
+    box-shadow: var(--container-box-shadow);
+    display: grid;
+    grid-template-columns: 1fr 300px;  /* Dos columnas: una para productos y otra para el carrito */
+    gap: var(--grid-gap);
+}
+
+.productos {
+    margin-bottom: var(--product-margin);
+}
+
+.categoria {
+    margin-bottom: var(--category-margin);
+}
+
+.categoria h3 {
+    font-size: var(--category-title-font-size);
+    color: var(--category-title-color);
+    margin-bottom: 10px;
+}
+
+.galeria-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--grid-gap);
+}
+
+.producto {
+    padding: var(--product-padding);
+    border: var(--product-border);
+    background-color: var(--product-bg-color);
+    transition: var(--product-transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: var(--product-border-radius);
+    overflow: hidden;
+}
+
+.producto:hover {
+    transform: scale(1.05);
+    box-shadow: var(--product-shadow);
+}
+
+.producto img {
+    max-width: 100%;
+    height: 150px; 
+    object-fit: cover;
+    border-bottom: var(--product-border);
+    border-radius: 8px 8px 0 0;
+}
+.producto-info {
+    padding: var(--product-info-padding);
+    text-align: var(--product-text-align);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.producto p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--product-text-color);
+}
+
+.precio {
+    font-weight: var(--price-font-weight);
+    color: var(--price-color);
+    font-size: var(--price-font-size);
+    margin-top: auto; /* Esto ajustará el espacio entre el texto y la parte inferior del contenedor */
+}
+
+.cart {
+    margin-bottom: var(--category-margin);
+    border-left: 1px solid #ddd;
+    padding-left: var(--product-padding);
+}
+
+.cart h2 {
+    font-size: var(--category-title-font-size);
+    color: var(--category-title-color);
+    margin-bottom: 10px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.total {
+    font-weight: var(--price-font-weight);
+    color: var(--price-color);
+    font-size: var(--price-font-size);
+}
+
+/* Estilo para el selector de categoría y el selector de orden */
+.category-selector select,
+.category-selector button {
+    font-size: 16px;
+    padding: 8px;
+    margin-right: 10px;
+}
+
+/* Estilo para los botones "Agregar al carrito" */
+.producto button {
+    margin-bottom: 20px;
+    background-color: #e44d26;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.producto button:hover {
+    background-color: #d04122;
+}
+
+/* Estilo para los botones del carrito */
+.cart button {
+    background-color: #e44d26;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.cart button:hover {
+    background-color: #d04122;
+}
+
+/* Estilo específico para el botón de eliminar (✕ roja) */
+.cart button.delete {
+    background-color: transparent;
+    color: #e44d26;
+    font-size: 18px;
+}
+
+.cart button.delete:hover {
+    color: #d04122;
+}
